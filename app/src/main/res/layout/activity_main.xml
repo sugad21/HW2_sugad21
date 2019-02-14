@@ -11,7 +11,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.example.sugad21.hw2_sugad21
+        <com.example.sugad21.hw2_sugad21.FlowerView
             android:id="@+id/surfaceView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +60,8 @@
                 android:id="@+id/redSeekBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="7" />
+                android:layout_weight="7"
+                android:progress="255" />
         </LinearLayout>
 
         <LinearLayout
@@ -82,7 +83,8 @@
                 android:id="@+id/greenSeekBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="8" />
+                android:layout_weight="8"
+                android:progress="255" />
         </LinearLayout>
 
         <LinearLayout
@@ -104,7 +106,8 @@
                 android:id="@+id/blueSeekBar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="8" />
+                android:layout_weight="8"
+                android:progress="255" />
 
         </LinearLayout>
 

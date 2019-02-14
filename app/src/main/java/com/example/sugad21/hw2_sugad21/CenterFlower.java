@@ -18,8 +18,9 @@ public class CenterFlower {
     }
 
     public void drawCenterFlower(Canvas canvas){
-        Paint leftPaint = new Paint();
-        leftPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        Paint centerPaint = new Paint();
+        centerPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        canvas.drawCircle(250,200,100,centerPaint);
 
     }
 }

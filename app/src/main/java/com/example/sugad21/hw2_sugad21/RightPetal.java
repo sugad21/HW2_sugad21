@@ -18,8 +18,9 @@ public class RightPetal {
     }
 
     public void drawRightPetal(Canvas canvas){
-        Paint leftPaint = new Paint();
-        leftPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        Paint rightPaint = new Paint();
+        rightPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        canvas.drawCircle(250,250,200,rightPaint);
 
     }
 }

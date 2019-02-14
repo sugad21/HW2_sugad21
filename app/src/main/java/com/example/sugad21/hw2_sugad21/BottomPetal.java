@@ -18,8 +18,9 @@ public class BottomPetal {
     }
 
     public void drawBottomPetal(Canvas canvas){
-        Paint leftPaint = new Paint();
-        leftPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        Paint bottomPaint = new Paint();
+        bottomPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        canvas.drawCircle(250,350,200,bottomPaint);
 
     }
 }

@@ -68,26 +68,27 @@ public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBar
 
         if(seekBar == nRedBar){
             redColor = nRedBar.getProgress();
-
         }
         else if(seekBar == nGreenBar){
-
             greenColor = nGreenBar.getProgress();
         }
         else if(seekBar == nBlueBar){
             blueColor = nBlueBar.getProgress();
         }
-
-
     }
 
     @Override
     public void onStartTrackingTouch(SeekBar seekBar) {
-
+    /*
+    Do Nothing
+     */
     }
 
     @Override
     public void onStopTrackingTouch(SeekBar seekBar) {
+        /*
+        Do Nothing
+         */
 
     }
 }

@@ -18,8 +18,9 @@ public class FlowerStem {
     }
 
     public void drawFlowerStem(Canvas canvas){
-        Paint leftPaint = new Paint();
-        leftPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        Paint stemPaint = new Paint();
+        stemPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        canvas.drawRect(250,250,250,250,stemPaint);
 
     }
 }

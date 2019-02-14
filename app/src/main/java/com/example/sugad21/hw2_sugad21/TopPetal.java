@@ -18,8 +18,9 @@ public class TopPetal {
     }
 
     public void drawTopPetal(Canvas canvas){
-        Paint leftPaint = new Paint();
-        leftPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        Paint topPaint = new Paint();
+        topPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        canvas.drawCircle(200,200,200,topPaint);
 
     }
 }

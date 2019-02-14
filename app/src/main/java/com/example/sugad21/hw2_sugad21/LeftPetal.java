@@ -24,6 +24,7 @@ public class LeftPetal {
     public void drawLeftPetal(Canvas canvas){
         Paint leftPaint = new Paint();
         leftPaint.setARGB(255,oldRed,oldGreen,oldBlue);
+        canvas.drawCircle(150,150,200,leftPaint);
 
     }
 
