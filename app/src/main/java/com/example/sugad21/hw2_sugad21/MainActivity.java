@@ -2,12 +2,12 @@ package com.example.sugad21.hw2_sugad21;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.SurfaceView;
+
 import android.widget.SeekBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private FlowerView newFlowerView;
+    private Flower flowerObject = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,12 +19,13 @@ public class MainActivity extends AppCompatActivity {
         If anything changes, ListenController will receive these changes.
          */
 
-        FlowerView mySurface = findViewById(R.id.surfaceView);
+        FlowerView mySurface = findViewById(R.id.flowerView);
         SeekBar rSeekBar = (SeekBar)findViewById(R.id.redSeekBar);
         SeekBar gSeekBar = (SeekBar)findViewById(R.id.greenSeekBar);
         SeekBar bSeekBar = (SeekBar)findViewById(R.id.blueSeekBar);
 
         ListenController listControl = new ListenController(rSeekBar,gSeekBar,bSeekBar,mySurface);
+
 
         mySurface.setOnTouchListener(listControl);
         rSeekBar.setOnSeekBarChangeListener(listControl);

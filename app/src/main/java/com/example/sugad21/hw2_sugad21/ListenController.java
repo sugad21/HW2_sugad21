@@ -1,5 +1,7 @@
 package com.example.sugad21.hw2_sugad21;
 
+import android.util.EventLog;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
@@ -11,9 +13,11 @@ public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBar
     private SeekBar nGreenBar = null;
     private SeekBar nBlueBar = null;
     private FlowerView fView = null;
+    private Flower prevFlower = null;
     private int redColor;
     private int greenColor;
     private int blueColor;
+    private String selectedObject;
 
 
 
@@ -32,30 +36,32 @@ public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBar
     }
 
     @Override
-    public boolean onTouch(View v, MotionEvent event) {
+    public boolean onTouch(View v, MotionEvent event){
+        int xCoord = (int)event.getX();
+        int yCoord = (int)event.getY();
 
-        if(v.getClass().equals(fView.getFlower().getLeftPetal())){
-            fView.getFlower().getLeftPetal().setLColor(redColor,greenColor,blueColor);
+        if(prevFlower.getLeftPetal().containsPoint(xCoord,yCoord)){
+            selectedObject = "Left Petal";
             return true;
         }
-        else if(v.getClass().equals(fView.getFlower().getBottomPetal())){
-            fView.getFlower().getRightPetal().setRColor(redColor,greenColor,blueColor);
+        else if(prevFlower.getRightPetal().containsPoint(xCoord,yCoord)){
+            selectedObject = "Right Petal";
             return true;
         }
-        else if(v.getClass().equals(fView.getFlower().getCenterFlower())){
-            fView.getFlower().getTopPetal().setTColor(redColor,greenColor,blueColor);
+        else if(prevFlower.getBottomPetal().containsPoint(xCoord,yCoord)){
+            selectedObject = "Bottom Petal";
             return true;
         }
-        else if(v.getClass().equals(fView.getFlower().getRightPetal())){
-            fView.getFlower().getBottomPetal().setBColor(redColor,greenColor,blueColor);
+        else if(prevFlower.getCenterFlower().containsPoint(xCoord,yCoord)){
+            selectedObject = "Center of Flower";
             return true;
         }
-        else if(v.getClass().equals(fView.getFlower().getTopPetal())){
-            fView.getFlower().getCenterFlower().setCColor(redColor,greenColor,blueColor);
+        else if(prevFlower.getTopPetal().containsPoint(xCoord,yCoord)){
+            selectedObject = "Top petal";
             return true;
         }
-        else if(v.getClass().equals(fView.getFlower().getNewStem())){
-            fView.getFlower().getNewStem().setSColor(redColor,greenColor,blueColor);
+        else if(prevFlower.getFlowerStem().containsPoint(xCoord,yCoord)){
+            selectedObject = "Flower Stem";
             return true;
         }
         return false;
@@ -68,13 +74,23 @@ public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBar
 
         if(seekBar == nRedBar){
             redColor = nRedBar.getProgress();
+            String p = Integer.toString(redColor);
+
+            Log.i(selectedObject,"redColor");
         }
         else if(seekBar == nGreenBar){
             greenColor = nGreenBar.getProgress();
+            String b = Integer.toString(greenColor);
+            Log.i(b,"blueColor");
         }
         else if(seekBar == nBlueBar){
             blueColor = nBlueBar.getProgress();
+            String a = Integer.toString(blueColor);
+            Log.i(a,"greenColor");
         }
+        prevFlower = new Flower(selectedObject,redColor,greenColor,blueColor);
+
+        fView.invalidate();
     }
 
     @Override
@@ -89,6 +105,5 @@ public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBar
         /*
         Do Nothing
          */
-
     }
 }

@@ -12,10 +12,11 @@
         android:orientation="vertical">
 
         <com.example.sugad21.hw2_sugad21.FlowerView
-            android:id="@+id/surfaceView"
+            android:id="@+id/flowerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="15" />
+            android:layout_weight="15"
+            android:clickable="true" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -61,7 +62,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="7"
-                android:progress="255" />
+                android:max="255" />
         </LinearLayout>
 
         <LinearLayout
@@ -84,7 +85,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
-                android:progress="255" />
+                android:max="255" />
         </LinearLayout>
 
         <LinearLayout
@@ -107,9 +108,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="8"
-                android:progress="255" />
+                android:max="255" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="horizontal"></LinearLayout>
 
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
