@@ -5,16 +5,16 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 
 public class FlowerView extends SurfaceView {
-    private Flower newFlower;
+    private Flower fObject;
+
     private String name = "";
-    private int red = 0;
-    private int green = 0;
-    private int blue = 0;
+
     /*
     Default constructors of SurfaceView that are already implemented.
      */
@@ -33,20 +33,24 @@ public class FlowerView extends SurfaceView {
         init();
     }
 
+
+
     private void init() {
+
+
 
         setWillNotDraw(false);
     }
 
-    public Flower getFlower() {
-        newFlower = new Flower(name,red,green,blue);
-        return newFlower;
-    }
+
+
+
 
     @Override
     protected void onDraw(Canvas canvas) {
+        fObject = new Flower(name,100,100,100);
 
-        getFlower().drawFlower(canvas);
+        fObject.drawFlower(canvas);
 
     }
 

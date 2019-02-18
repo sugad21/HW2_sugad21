@@ -7,7 +7,7 @@ import android.widget.SeekBar;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Flower flowerObject = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

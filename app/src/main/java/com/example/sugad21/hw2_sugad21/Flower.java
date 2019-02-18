@@ -2,6 +2,7 @@ package com.example.sugad21.hw2_sugad21;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.util.Log;
 
 
 public class Flower{
@@ -19,6 +20,8 @@ public class Flower{
     Paint newPaint = new Paint();
 
     public Flower(String name, int newRed, int newGreen, int newBlue){
+        String l = Integer.toString(newRed);
+        Log.i(l,"this is red222 int");
         this.myName = name;
         setColor(newRed,newGreen,newBlue);
         red = newRed;
@@ -31,7 +34,9 @@ public class Flower{
     }
 
     public LeftPetal getLeftPetal(){
-        return leftPetal = new LeftPetal(myName,red,green,blue,0,200,50);
+        String l = Integer.toString(red);
+        Log.i(l,"this is red int");
+        return leftPetal = new LeftPetal(myName,160,0,100,0,200,50);
     }
     public RightPetal getRightPetal(){
         return rightPetal = new RightPetal(myName,red,green,blue,100,300,50);
@@ -48,7 +53,12 @@ public class Flower{
     public FlowerStem getFlowerStem(){
         return newStem = new FlowerStem(myName,red,green,blue,300,300,300,300);
     }
-
+    public Flower getFlower(){
+        return new Flower(myName,red,green,blue);
+    }
+    public String getMyName(){
+        return myName;
+    }
 
 
 
