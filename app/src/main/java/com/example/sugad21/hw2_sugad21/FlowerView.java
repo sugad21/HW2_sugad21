@@ -9,10 +9,11 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
+import android.widget.TextView;
 
 public class FlowerView extends SurfaceView {
     private Flower fObject;
-
+    private Canvas c = null;
     private String name = "";
 
     /*
@@ -37,8 +38,7 @@ public class FlowerView extends SurfaceView {
 
     private void init() {
 
-
-
+        fObject = new Flower();
         setWillNotDraw(false);
     }
 
@@ -48,7 +48,9 @@ public class FlowerView extends SurfaceView {
 
     @Override
     protected void onDraw(Canvas canvas) {
-        fObject = new Flower(name,100,100,100);
+        if(c == null){
+            c = canvas;
+        }
 
         fObject.drawFlower(canvas);
 

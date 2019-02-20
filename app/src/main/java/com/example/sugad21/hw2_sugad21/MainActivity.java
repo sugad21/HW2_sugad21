@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -23,8 +24,9 @@ public class MainActivity extends AppCompatActivity {
         SeekBar rSeekBar = (SeekBar)findViewById(R.id.redSeekBar);
         SeekBar gSeekBar = (SeekBar)findViewById(R.id.greenSeekBar);
         SeekBar bSeekBar = (SeekBar)findViewById(R.id.blueSeekBar);
+        TextView locationText = (TextView)findViewById(R.id.locationText);
 
-        ListenController listControl = new ListenController(rSeekBar,gSeekBar,bSeekBar,mySurface);
+        ListenController listControl = new ListenController(rSeekBar,gSeekBar,bSeekBar,mySurface,locationText);
 
 
         mySurface.setOnTouchListener(listControl);

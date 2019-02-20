@@ -15,9 +15,9 @@ public class FlowerStem extends Flower {
     /**
      * the rectangles dimensions must be defined at construction
      */
-    public FlowerStem(String name, int newRed, int newGreen, int newBlue,
+    public FlowerStem(int newRed, int newGreen, int newBlue,
                       int left, int top, int right, int bottom) {
-        super(name, newRed, newGreen, newBlue);
+        super(newRed, newGreen, newBlue);
 
         this.myRect = new Rect(left, top, right, bottom);
     }

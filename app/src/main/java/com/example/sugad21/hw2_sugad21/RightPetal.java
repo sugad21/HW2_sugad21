@@ -14,9 +14,9 @@ public class RightPetal extends Flower {
     private int blue;
 
     /** the circle's dimensions must be defined at construction */
-    public RightPetal(String name, int newRed, int newGreen, int newBlue, int x, int y, int radius)
+    public RightPetal(int newRed, int newGreen, int newBlue, int x, int y, int radius)
     {
-        super(name,newRed,newGreen,newBlue);
+        super(newRed,newGreen,newBlue);
 
         this.x = x;
         this.y = y;

@@ -17,48 +17,86 @@ public class Flower{
     private TopPetal topPetal = null;
     private FlowerStem newStem = null;
     private CenterFlower centerFlower = null;
-    Paint newPaint = new Paint();
+    Paint newPaint;
 
-    public Flower(String name, int newRed, int newGreen, int newBlue){
+    public Flower(int newRed, int newGreen, int newBlue){
         String l = Integer.toString(newRed);
         Log.i(l,"this is red222 int");
-        this.myName = name;
+
+
         setColor(newRed,newGreen,newBlue);
         red = newRed;
         green = newGreen;
         blue = newBlue;
     }
 
+    public Flower(){
+        getFlower();
+    }
+
+    public int getRed1(){
+        return red;
+    }
+    public int getGreen2(){
+        return green;
+    }
+    public int getBlue2(){
+        return blue;
+    }
+
     public void setColor(int red, int green, int blue){
+        newPaint = new Paint();
         newPaint.setARGB(255,red,green,blue);
+
+    }
+
+    public void setFlower(Flower thisOne){
+
     }
 
     public LeftPetal getLeftPetal(){
         String l = Integer.toString(red);
         Log.i(l,"this is red int");
-        return leftPetal = new LeftPetal(myName,160,0,100,0,200,50);
+        return leftPetal = new LeftPetal(getRed1(),getGreen2(),getBlue2(),300,600,200);
     }
     public RightPetal getRightPetal(){
-        return rightPetal = new RightPetal(myName,red,green,blue,100,300,50);
+        return rightPetal = new RightPetal(getRed1(),getGreen2(),getBlue2(),900,600,200);
     }
     public TopPetal getTopPetal(){
-        return topPetal = new TopPetal(myName,red,green,blue,200,400,50);
+        return topPetal = new TopPetal(getRed1(),getGreen2(),getBlue2(),600,300,200);
     }
     public BottomPetal getBottomPetal(){
-        return bottomPetal = new BottomPetal(myName,red,green,blue,300,500,50);
+        return bottomPetal = new BottomPetal(getRed1(),getGreen2(),getBlue2(),600,900,200);
     }
     public CenterFlower getCenterFlower(){
-        return centerFlower = new CenterFlower(myName,red,green,blue,400,600,50);
+        return centerFlower = new CenterFlower(getRed1(),getGreen2(),getBlue2(),600,600,100);
     }
     public FlowerStem getFlowerStem(){
-        return newStem = new FlowerStem(myName,red,green,blue,300,300,300,300);
+        return newStem = new FlowerStem(getRed1(),getGreen2(),getBlue2(),500,900,700,1500);
     }
     public Flower getFlower(){
-        return new Flower(myName,red,green,blue);
+        return new Flower(getRed1(),getGreen2(),getBlue2());
     }
-    public String getMyName(){
-        return myName;
+    public void setLeftPetal(LeftPetal newLeftPetal){
+        leftPetal = newLeftPetal;
     }
+    public void setRightPetal(RightPetal newRightPetal){
+        rightPetal= newRightPetal;
+    }
+    public void setTopPetal(TopPetal newTopPetal){
+        topPetal = newTopPetal;
+    }
+    public void setBottomPetal(BottomPetal newBottomPetal){
+        bottomPetal = newBottomPetal;
+    }public void setCenterFlower(CenterFlower newCenterFlower){
+        centerFlower = newCenterFlower;
+    }public void setFlowerStem(FlowerStem newFlowerStem){
+        newStem = newFlowerStem;
+    }
+
+
+
+
 
 
 

@@ -6,6 +6,7 @@ import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.View;
 import android.widget.SeekBar;
+import android.widget.TextView;
 
 public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBarChangeListener {
 
@@ -14,6 +15,7 @@ public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBar
     private SeekBar nBlueBar = null;
     private FlowerView fView = null;
     private Flower prevFlower = null;
+    private TextView currentLocation = null;
     private int redColor;
     private int greenColor;
     private int blueColor;
@@ -28,11 +30,12 @@ public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBar
     Default constructor is meant handle elements from the MainActivity class
      */
 
-    public ListenController(SeekBar oRedBar, SeekBar oGreenBar, SeekBar oBlueBar,FlowerView oldFView){
+    public ListenController(SeekBar oRedBar, SeekBar oGreenBar, SeekBar oBlueBar,FlowerView oldFView,TextView newLocation){
         nRedBar = oRedBar;
         nGreenBar = oGreenBar;
         nBlueBar = oBlueBar;
         fView = oldFView;
+        currentLocation = newLocation;
     }
 
     @Override
@@ -41,29 +44,35 @@ public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBar
         int yCoord = (int)event.getY();
 
         if(prevFlower.getLeftPetal().containsPoint(xCoord,yCoord)){
-            selectedObject = "Left Petal";
+            currentLocation.setText("Left Petal");
+
             return true;
         }
         else if(prevFlower.getRightPetal().containsPoint(xCoord,yCoord)){
-            selectedObject = "Right Petal";
+            currentLocation.setText("Right Petal");
+
             return true;
         }
         else if(prevFlower.getBottomPetal().containsPoint(xCoord,yCoord)){
-            selectedObject = "Bottom Petal";
+            currentLocation.setText("Bottom Petal");
+
             return true;
         }
         else if(prevFlower.getCenterFlower().containsPoint(xCoord,yCoord)){
-            selectedObject = "Center of Flower";
+            currentLocation.setText("Center Petal");
+
             return true;
         }
         else if(prevFlower.getTopPetal().containsPoint(xCoord,yCoord)){
-            selectedObject = "Top petal";
+            currentLocation.setText("Top Petal");
             return true;
         }
         else if(prevFlower.getFlowerStem().containsPoint(xCoord,yCoord)){
-            selectedObject = "Flower Stem";
+            currentLocation.setText(" Flower Stem");
+
             return true;
         }
+
         return false;
     }
 
@@ -72,25 +81,51 @@ public class ListenController implements View.OnTouchListener, SeekBar.OnSeekBar
     @Override
     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-        if(seekBar == nRedBar){
-            redColor = nRedBar.getProgress();
-            String p = Integer.toString(redColor);
-
-            Log.i(selectedObject,"redColor");
-        }
-        else if(seekBar == nGreenBar){
-            greenColor = nGreenBar.getProgress();
-            String b = Integer.toString(greenColor);
-            Log.i(b,"blueColor");
-        }
-        else if(seekBar == nBlueBar){
+        if(seekBar == nRedBar || seekBar == nGreenBar || seekBar == nBlueBar){
             blueColor = nBlueBar.getProgress();
-            String a = Integer.toString(blueColor);
-            Log.i(a,"greenColor");
-        }
-        prevFlower = new Flower(selectedObject,redColor,greenColor,blueColor);
+            greenColor = nGreenBar.getProgress();
+            redColor = nRedBar.getProgress();
+            prevFlower = new Flower();
 
+
+            if(currentLocation.getText() == "Left Petal"){
+                prevFlower = new Flower(redColor,greenColor,blueColor);
+
+
+
+
+            }
+            else if(currentLocation.getText() == "Right Petal"){
+                prevFlower = new Flower(redColor,greenColor,blueColor);
+
+            }
+            else if(currentLocation.getText() == "Bottom Petal"){
+                prevFlower = new Flower(redColor,greenColor,blueColor);
+
+
+
+
+            }
+            else if(currentLocation.getText() == "Top Petal"){
+                prevFlower = new Flower(redColor,greenColor,blueColor);
+
+
+
+
+            }
+            else if(currentLocation.getText() == "Center Petal"){
+                prevFlower = new Flower(redColor,greenColor,blueColor);
+
+            }
+            else if(currentLocation.getText() == "Flower Stem"){
+                prevFlower = new Flower(redColor,greenColor,blueColor);
+
+
+            }
+        }
+        prevFlower.getFlower();
         fView.invalidate();
+
     }
 
     @Override
