@@ -6,6 +6,11 @@ import android.os.Bundle;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+/*
+Author: Dylan Suga
+Date: 2-20-19
+ */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -25,9 +30,18 @@ public class MainActivity extends AppCompatActivity {
         SeekBar gSeekBar = (SeekBar)findViewById(R.id.greenSeekBar);
         SeekBar bSeekBar = (SeekBar)findViewById(R.id.blueSeekBar);
         TextView locationText = (TextView)findViewById(R.id.locationText);
+        TextView rProgress = (TextView)findViewById(R.id.redProgress);
+        TextView gProgress = (TextView)findViewById(R.id.greenProgress);
+        TextView bProgress = (TextView)findViewById(R.id.blueProgress);
 
-        ListenController listControl = new ListenController(rSeekBar,gSeekBar,bSeekBar,mySurface,locationText);
+    /*
+    Listen controller hears the change from all its parameters and adjusts variables within them
+     */
+        ListenController listControl = new ListenController(rSeekBar,gSeekBar,bSeekBar,mySurface,locationText,rProgress,gProgress,bProgress);
 
+        /*
+        The listeners and tell listenController that something changed
+         */
 
         mySurface.setOnTouchListener(listControl);
         rSeekBar.setOnSeekBarChangeListener(listControl);

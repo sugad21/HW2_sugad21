@@ -4,32 +4,48 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 
-public class FlowerStem extends Flower {
+/*
+author: Dylan Suga
+Date: 2-20-19
+ */
 
+public class FlowerStem  {
+    //instance variables and set
+    //I think this is bad etiquette... Sorry
+    private int TAP_MARGIN = 10;
+    protected Rect myRect = new Rect(500,900,700,1500);
+    private Paint newPaint1;
+    private int newGreen;
+    private int newRed;
+    private int newBlue;
 
-    /**
-     * the position and size of the rectangle is stored here
-     */
-    protected Rect myRect;
+    //this method is called in listener class and is set there
+    //instance variables are defined by progress
+    public void setStemColor(int red, int green, int blue){
 
-    /**
-     * the rectangles dimensions must be defined at construction
-     */
-    public FlowerStem(int newRed, int newGreen, int newBlue,
-                      int left, int top, int right, int bottom) {
-        super(newRed, newGreen, newBlue);
+        newGreen = green;
+        newRed = red;
+        newBlue = blue;
 
-        this.myRect = new Rect(left, top, right, bottom);
     }
-
-
-
+    /*
+    Called in the flowerView class to draw the basic shape of the stem aspect
+    of the flower
+     */
     public void drawMe(Canvas canvas) {
-        canvas.drawRect(myRect, newPaint);  //main rectangle
-        //canvas.drawRect(myRect, outlinePaint);  //outline around rectangle
+        newPaint1 = new Paint();
+        newPaint1.setARGB(255,newRed,newGreen,newBlue);
+        canvas.drawRect(myRect, newPaint1);
+
     }
 
-
+    /*
+    External Citation
+    Date: 2-17-19
+    Problem: Before, I thought I could tap on the image and check if it touched a subclass of the
+    SurfaceView, but that didn't work, so I used the optional code. I like it.
+    Solution: I used the containsPoint method
+     */
     public boolean containsPoint(int x, int y) {
 
         //Want to check for a tap within a slightly larger rectangle
@@ -42,16 +58,4 @@ public class FlowerStem extends Flower {
         return r.contains(x, y);
     }//contaisPoint
 
-
-
-    public int getSize() {
-        return this.myRect.width() * this.myRect.height();
-    }
-/*
-    @Override
-    public void drawHighlight(Canvas canvas) {
-        canvas.drawRect(myRect, highlightPaint);
-        canvas.drawRect(myRect, outlinePaint);  //keep outline so it stands out
-    }
-*/
 }

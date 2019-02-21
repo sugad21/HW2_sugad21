@@ -2,40 +2,50 @@ package com.example.sugad21.hw2_sugad21;
 
 import android.graphics.Canvas;
 import android.graphics.Paint;
-
-public class TopPetal extends Flower {
+/*
+Author: Dylan Suga
+Date: 2-20-19
+ */
+public class TopPetal  {
 
     /** these variables define the location and radius of a circle */
-    private int x;
-    private int y;
-    private int radius;
-    private int red;
-    private int green;
-    private int blue;
+    private int TAP_MARGIN = 10;
+    private int x = 600;
+    private int y = 300;
+    private int radius = 200;
+    private int newRed = 0;
+    private int newGreen = 0;
+    private int newBlue = 0;
+    private Paint newPaint;
 
-    /** the circle's dimensions must be defined at construction */
-    public TopPetal(int newRed, int newGreen, int newBlue, int x, int y, int radius)
-    {
-        super(newRed,newGreen,newBlue);
+/*
+    this method is called in listener class and is set there
+    instance variables are defined by progress
+     */
+    public void setTopColor(int red, int green, int blue){
+        newRed = red;
+        newGreen = green;
+        newBlue = blue;
 
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.red = newRed;
-        this.green = newGreen;
-        this.blue = newBlue;
     }
 
-
-
+    /*
+    Called in the flowerView class to draw the basic shape of the top petal aspect
+    of the flower
+     */
     public void drawMe(Canvas canvas) {
+        newPaint = new Paint();
+        newPaint.setARGB(255,newRed,newGreen,newBlue);
         canvas.drawCircle(x, y, radius, newPaint);  //main circle
-        //canvas.drawCircle(x, y, radius, outlinePaint);  //outline around circle
     }
 
-
-    /** for ease of calculation, just draw a box around the circle and see if the point is in that */
-
+    /*
+    External Citation
+    Date: 2-17-19
+    Problem: Before, I thought I could tap on the image and check if it touched a subclass of the
+    SurfaceView, but that didn't work, so I used the optional code. I like it.
+    Solution: I used the containsPoint method
+     */
     public boolean containsPoint(int x, int y) {
         //Calculate the distance between this point and the center
         int xDist = Math.abs(x - this.x);
@@ -43,22 +53,6 @@ public class TopPetal extends Flower {
         int dist = (int)Math.sqrt(xDist*xDist + yDist*yDist);  //Thanks, Pythagoras :)
 
         return (dist < this.radius + TAP_MARGIN);
-    }//contaisPoint
-
-
-    /** I knew that middle school geometry class would pay off someday */
-
-    public int getSize() {
-        return (int)(Math.PI * this.radius * this.radius);
-    }
-
-/*
-    @Override
-    public void drawHighlight(Canvas canvas) {
-        canvas.drawCircle(x, y, radius, highlightPaint);
-        //canvas.drawCircle(x, y, radius, outlinePaint);  //keep outline so it stands out
-    }
-    */
-
+    }//containsPoint
 }//class CustomCircle
 
